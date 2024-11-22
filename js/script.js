@@ -1,5 +1,5 @@
 let gridContainer = document.querySelector(".gridContainer");
-let grid = 25;
+let grid = 256;
 
 for (let i = 1; i <= grid; i++){
     const gridItem = document.createElement("div");
