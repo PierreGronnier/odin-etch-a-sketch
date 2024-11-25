@@ -17,20 +17,16 @@ body {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    max-width: 500px;
+    max-width: 960px;
     margin: auto;
     border: 1px solid #000;
 }
 
 .gridItem {
-    flex-basis: calc(100% / 16);
     height: auto;
     aspect-ratio: 1 / 1;
-    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid #ddd;
-    font-size: 12px;
-    color: #333;
 }
