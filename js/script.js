@@ -1,6 +1,7 @@
 let gridContainer = document.querySelector(".gridContainer");
 let gridSize = document.querySelector("#gridSize");
 let buttonColor = document.querySelector("#randomColor");
+let reset = document.querySelector("#reset");
 let grid = 16 * 16;
 let randomMode = false;
 
@@ -50,6 +51,13 @@ function generateRandomColor() {
     return color;
 }
 
+function buttonReset(){
+    reset.addEventListener("click", () => {
+        createGrid();
+    });
+}
+
 createGrid();
 gridChange();
 randomColor();
+buttonReset();
