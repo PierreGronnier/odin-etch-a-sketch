@@ -4,6 +4,7 @@ let buttonColor = document.querySelector("#randomColor");
 let reset = document.querySelector("#reset");
 let grid = 16 * 16;
 let randomMode = false;
+let isMouseDown = false;
 
 function createGrid() {
     gridContainer.innerHTML = "";
@@ -11,16 +12,31 @@ function createGrid() {
         const gridItem = document.createElement("div");
         gridItem.classList.add("gridItem");
         gridItem.style.flexBasis = `calc(100% / ${Math.sqrt(grid)})`;
-        
-        gridItem.addEventListener("mouseover", () => {
-            if (randomMode) {
-                gridItem.style.backgroundColor = generateRandomColor(); 
-            } else {
-                gridItem.style.backgroundColor = "#000000"; 
+
+        gridItem.addEventListener("mousedown", () => {
+            isMouseDown = true;
+            applyColor(gridItem);
+        });
+
+        gridItem.addEventListener("mousemove", () => {
+            if (isMouseDown) {
+                applyColor(gridItem);
             }
         });
-        
+
         gridContainer.appendChild(gridItem);
+    }
+
+    document.addEventListener("mouseup", () => {
+        isMouseDown = false;
+    });
+}
+
+function applyColor(gridItem) {
+    if (randomMode) {
+        gridItem.style.backgroundColor = generateRandomColor();
+    } else {
+        gridItem.style.backgroundColor = "#000000";
     }
 }
 
@@ -38,7 +54,7 @@ function gridChange() {
 
 function randomColor() {
     buttonColor.addEventListener("click", () => {
-        randomMode = !randomMode; 
+        randomMode = !randomMode;
     });
 }
 
@@ -51,7 +67,8 @@ function generateRandomColor() {
     return color;
 }
 
-function buttonReset(){
+
+function buttonReset() {
     reset.addEventListener("click", () => {
         createGrid();
     });
